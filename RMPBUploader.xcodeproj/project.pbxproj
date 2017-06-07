@@ -15,6 +15,9 @@
 		5F9416E31D1591FC00996842 /* RMPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9416E21D1591FC00996842 /* RMPB.swift */; };
 		5FA267371D16FD68003C59E7 /* NSOpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA267361D16FD68003C59E7 /* NSOpenPanel.swift */; };
 		5FE83A061EE88851000CDA55 /* Xml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE83A051EE88851000CDA55 /* Xml.swift */; };
+		5FE83A0B1EE8A82D000CDA55 /* PrefsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE83A091EE8A82D000CDA55 /* PrefsController.swift */; };
+		5FE83A0C1EE8A82D000CDA55 /* PrefsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE83A0A1EE8A82D000CDA55 /* PrefsController.xib */; };
+		5FE83A0E1EE8B0BF000CDA55 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE83A0D1EE8B0BF000CDA55 /* String.swift */; };
 		D245D6871B95037600E7B998 /* ImageCropperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245D6851B95037600E7B998 /* ImageCropperController.swift */; };
 		D245D6881B95037600E7B998 /* ImageCropperController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D245D6861B95037600E7B998 /* ImageCropperController.xib */; };
 		D245D68E1B9743A400E7B998 /* DraggableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245D68D1B9743A400E7B998 /* DraggableItem.swift */; };
@@ -45,6 +48,9 @@
 		5F9416E21D1591FC00996842 /* RMPB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPB.swift; sourceTree = "<group>"; };
 		5FA267361D16FD68003C59E7 /* NSOpenPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOpenPanel.swift; sourceTree = "<group>"; };
 		5FE83A051EE88851000CDA55 /* Xml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xml.swift; sourceTree = "<group>"; };
+		5FE83A091EE8A82D000CDA55 /* PrefsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefsController.swift; sourceTree = "<group>"; };
+		5FE83A0A1EE8A82D000CDA55 /* PrefsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefsController.xib; path = RMPBUploader/PrefsController.xib; sourceTree = SOURCE_ROOT; };
+		5FE83A0D1EE8B0BF000CDA55 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		70A2EA91F48BC428F7BDE247 /* Pods_RMPBUploader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMPBUploader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7486330BDFB8AA7AF1922594 /* Pods-RMPBUploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPBUploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader.release.xcconfig"; sourceTree = "<group>"; };
 		B465DB89533CD0D502493B05 /* Pods-RMPBUploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPBUploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 		D245D6891B950F2E00E7B998 /* xibs */ = {
 			isa = PBXGroup;
 			children = (
+				5FE83A0A1EE8A82D000CDA55 /* PrefsController.xib */,
 				D2C94D451B9244800038B773 /* MainMenu.xib */,
 				D245D6861B95037600E7B998 /* ImageCropperController.xib */,
 			);
@@ -103,6 +110,7 @@
 		D245D68A1B950F5200E7B998 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5FE83A0D1EE8B0BF000CDA55 /* String.swift */,
 				D245D68D1B9743A400E7B998 /* DraggableItem.swift */,
 				D2C94D5E1B929EDB0038B773 /* TableHelper.swift */,
 				D2C94D5C1B926B110038B773 /* Image.swift */,
@@ -141,6 +149,7 @@
 			children = (
 				D245D6891B950F2E00E7B998 /* xibs */,
 				D2C94D411B9244800038B773 /* AppDelegate.swift */,
+				5FE83A091EE8A82D000CDA55 /* PrefsController.swift */,
 				D245D6851B95037600E7B998 /* ImageCropperController.swift */,
 				D2C94D431B9244800038B773 /* Images.xcassets */,
 				D245D68A1B950F5200E7B998 /* Classes */,
@@ -279,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2C94D441B9244800038B773 /* Images.xcassets in Resources */,
+				5FE83A0C1EE8A82D000CDA55 /* PrefsController.xib in Resources */,
 				D245D6881B95037600E7B998 /* ImageCropperController.xib in Resources */,
 				5F2ED0231D11DD2200243904 /* PodFile in Resources */,
 				D2C94D471B9244800038B773 /* MainMenu.xib in Resources */,
@@ -347,6 +357,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FE83A0B1EE8A82D000CDA55 /* PrefsController.swift in Sources */,
+				5FE83A0E1EE8B0BF000CDA55 /* String.swift in Sources */,
 				D2C94D421B9244800038B773 /* AppDelegate.swift in Sources */,
 				D245D6871B95037600E7B998 /* ImageCropperController.swift in Sources */,
 				D245D68E1B9743A400E7B998 /* DraggableItem.swift in Sources */,
