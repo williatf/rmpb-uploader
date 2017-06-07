@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2E8DDF6818B10E4744CC410A /* Pods_RMPBUploader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A2EA91F48BC428F7BDE247 /* Pods_RMPBUploader.framework */; };
+		5F2ED01B1D119E5900243904 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2ED01A1D119E5900243904 /* Flickr.swift */; };
+		5F2ED01D1D119E8A00243904 /* ConcurrentOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2ED01C1D119E8A00243904 /* ConcurrentOperation.swift */; };
+		5F2ED0231D11DD2200243904 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 5F2ED0221D11DD2200243904 /* PodFile */; };
+		5F9416E01D14697E00996842 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9416DF1D14697E00996842 /* String.swift */; };
+		5F9416E31D1591FC00996842 /* RMPB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9416E21D1591FC00996842 /* RMPB.swift */; };
+		5FA267371D16FD68003C59E7 /* NSOpenPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA267361D16FD68003C59E7 /* NSOpenPanel.swift */; };
+		5FE83A061EE88851000CDA55 /* Xml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE83A051EE88851000CDA55 /* Xml.swift */; };
+		D245D6871B95037600E7B998 /* ImageCropperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245D6851B95037600E7B998 /* ImageCropperController.swift */; };
+		D245D6881B95037600E7B998 /* ImageCropperController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D245D6861B95037600E7B998 /* ImageCropperController.xib */; };
+		D245D68E1B9743A400E7B998 /* DraggableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245D68D1B9743A400E7B998 /* DraggableItem.swift */; };
+		D2C94D421B9244800038B773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C94D411B9244800038B773 /* AppDelegate.swift */; };
+		D2C94D441B9244800038B773 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2C94D431B9244800038B773 /* Images.xcassets */; };
+		D2C94D471B9244800038B773 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C94D451B9244800038B773 /* MainMenu.xib */; };
+		D2C94D531B9244800038B773 /* RMPBUploaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C94D521B9244800038B773 /* RMPBUploaderTests.swift */; };
+		D2C94D5D1B926B110038B773 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C94D5C1B926B110038B773 /* Image.swift */; };
+		D2C94D5F1B929EDB0038B773 /* TableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C94D5E1B929EDB0038B773 /* TableHelper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D2C94D4D1B9244800038B773 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2C94D341B9244800038B773 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2C94D3B1B9244800038B773;
+			remoteInfo = RMPBUploader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5F2ED01A1D119E5900243904 /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
+		5F2ED01C1D119E8A00243904 /* ConcurrentOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcurrentOperation.swift; sourceTree = "<group>"; };
+		5F2ED01E1D119EC900243904 /* RMPBUploader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMPBUploader-Bridging-Header.h"; sourceTree = "<group>"; };
+		5F2ED0221D11DD2200243904 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5F9416DF1D14697E00996842 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5F9416E21D1591FC00996842 /* RMPB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMPB.swift; sourceTree = "<group>"; };
+		5FA267361D16FD68003C59E7 /* NSOpenPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOpenPanel.swift; sourceTree = "<group>"; };
+		5FE83A051EE88851000CDA55 /* Xml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xml.swift; sourceTree = "<group>"; };
+		70A2EA91F48BC428F7BDE247 /* Pods_RMPBUploader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMPBUploader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7486330BDFB8AA7AF1922594 /* Pods-RMPBUploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPBUploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader.release.xcconfig"; sourceTree = "<group>"; };
+		B465DB89533CD0D502493B05 /* Pods-RMPBUploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPBUploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader.debug.xcconfig"; sourceTree = "<group>"; };
+		D245D6851B95037600E7B998 /* ImageCropperController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCropperController.swift; sourceTree = "<group>"; };
+		D245D6861B95037600E7B998 /* ImageCropperController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCropperController.xib; sourceTree = "<group>"; };
+		D245D68D1B9743A400E7B998 /* DraggableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DraggableItem.swift; path = RMPBUploader/DraggableItem.swift; sourceTree = SOURCE_ROOT; };
+		D2C94D3C1B9244800038B773 /* RMPBUploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMPBUploader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2C94D401B9244800038B773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2C94D411B9244800038B773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D2C94D431B9244800038B773 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D2C94D461B9244800038B773 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D2C94D4C1B9244800038B773 /* RMPBUploaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMPBUploaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2C94D511B9244800038B773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2C94D521B9244800038B773 /* RMPBUploaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMPBUploaderTests.swift; sourceTree = "<group>"; };
+		D2C94D5C1B926B110038B773 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		D2C94D5E1B929EDB0038B773 /* TableHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableHelper.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2C94D391B9244800038B773 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E8DDF6818B10E4744CC410A /* Pods_RMPBUploader.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2C94D491B9244800038B773 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F9416DE1D14696A00996842 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5F9416DF1D14697E00996842 /* String.swift */,
+				5FA267361D16FD68003C59E7 /* NSOpenPanel.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D245D6891B950F2E00E7B998 /* xibs */ = {
+			isa = PBXGroup;
+			children = (
+				D2C94D451B9244800038B773 /* MainMenu.xib */,
+				D245D6861B95037600E7B998 /* ImageCropperController.xib */,
+			);
+			name = xibs;
+			sourceTree = "<group>";
+		};
+		D245D68A1B950F5200E7B998 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D245D68D1B9743A400E7B998 /* DraggableItem.swift */,
+				D2C94D5E1B929EDB0038B773 /* TableHelper.swift */,
+				D2C94D5C1B926B110038B773 /* Image.swift */,
+				5F2ED01A1D119E5900243904 /* Flickr.swift */,
+				5F2ED01C1D119E8A00243904 /* ConcurrentOperation.swift */,
+				5F9416E21D1591FC00996842 /* RMPB.swift */,
+				5FE83A051EE88851000CDA55 /* Xml.swift */,
+				5F2ED01E1D119EC900243904 /* RMPBUploader-Bridging-Header.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		D2C94D331B9244800038B773 = {
+			isa = PBXGroup;
+			children = (
+				5F2ED0221D11DD2200243904 /* PodFile */,
+				D2C94D3E1B9244800038B773 /* RMPBUploader */,
+				D2C94D4F1B9244800038B773 /* RMPBUploaderTests */,
+				D2C94D3D1B9244800038B773 /* Products */,
+				EA91643B74283E5441409CB8 /* Pods */,
+				DBE9D6E259FD44A6B6708D03 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D2C94D3D1B9244800038B773 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2C94D3C1B9244800038B773 /* RMPBUploader.app */,
+				D2C94D4C1B9244800038B773 /* RMPBUploaderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2C94D3E1B9244800038B773 /* RMPBUploader */ = {
+			isa = PBXGroup;
+			children = (
+				D245D6891B950F2E00E7B998 /* xibs */,
+				D2C94D411B9244800038B773 /* AppDelegate.swift */,
+				D245D6851B95037600E7B998 /* ImageCropperController.swift */,
+				D2C94D431B9244800038B773 /* Images.xcassets */,
+				D245D68A1B950F5200E7B998 /* Classes */,
+				D2C94D3F1B9244800038B773 /* Supporting Files */,
+				5F9416DE1D14696A00996842 /* Extensions */,
+			);
+			path = RMPBUploader;
+			sourceTree = "<group>";
+		};
+		D2C94D3F1B9244800038B773 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D2C94D401B9244800038B773 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D2C94D4F1B9244800038B773 /* RMPBUploaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2C94D521B9244800038B773 /* RMPBUploaderTests.swift */,
+				D2C94D501B9244800038B773 /* Supporting Files */,
+			);
+			path = RMPBUploaderTests;
+			sourceTree = "<group>";
+		};
+		D2C94D501B9244800038B773 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D2C94D511B9244800038B773 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DBE9D6E259FD44A6B6708D03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70A2EA91F48BC428F7BDE247 /* Pods_RMPBUploader.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA91643B74283E5441409CB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B465DB89533CD0D502493B05 /* Pods-RMPBUploader.debug.xcconfig */,
+				7486330BDFB8AA7AF1922594 /* Pods-RMPBUploader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2C94D3B1B9244800038B773 /* RMPBUploader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2C94D561B9244800038B773 /* Build configuration list for PBXNativeTarget "RMPBUploader" */;
+			buildPhases = (
+				CA8064D4F1A26F3A28AE747A /* [CP] Check Pods Manifest.lock */,
+				D2C94D381B9244800038B773 /* Sources */,
+				D2C94D391B9244800038B773 /* Frameworks */,
+				D2C94D3A1B9244800038B773 /* Resources */,
+				7F5AF1A92379C02D7A43A23B /* [CP] Embed Pods Frameworks */,
+				515C70A1592E148D506B71DD /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMPBUploader;
+			productName = RMPBUploader;
+			productReference = D2C94D3C1B9244800038B773 /* RMPBUploader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D2C94D4B1B9244800038B773 /* RMPBUploaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2C94D591B9244800038B773 /* Build configuration list for PBXNativeTarget "RMPBUploaderTests" */;
+			buildPhases = (
+				D2C94D481B9244800038B773 /* Sources */,
+				D2C94D491B9244800038B773 /* Frameworks */,
+				D2C94D4A1B9244800038B773 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2C94D4E1B9244800038B773 /* PBXTargetDependency */,
+			);
+			name = RMPBUploaderTests;
+			productName = RMPBUploaderTests;
+			productReference = D2C94D4C1B9244800038B773 /* RMPBUploaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2C94D341B9244800038B773 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Todd Williams";
+				TargetAttributes = {
+					D2C94D3B1B9244800038B773 = {
+						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0830;
+					};
+					D2C94D4B1B9244800038B773 = {
+						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0830;
+						TestTargetID = D2C94D3B1B9244800038B773;
+					};
+				};
+			};
+			buildConfigurationList = D2C94D371B9244800038B773 /* Build configuration list for PBXProject "RMPBUploader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2C94D331B9244800038B773;
+			productRefGroup = D2C94D3D1B9244800038B773 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2C94D3B1B9244800038B773 /* RMPBUploader */,
+				D2C94D4B1B9244800038B773 /* RMPBUploaderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2C94D3A1B9244800038B773 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C94D441B9244800038B773 /* Images.xcassets in Resources */,
+				D245D6881B95037600E7B998 /* ImageCropperController.xib in Resources */,
+				5F2ED0231D11DD2200243904 /* PodFile in Resources */,
+				D2C94D471B9244800038B773 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2C94D4A1B9244800038B773 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		515C70A1592E148D506B71DD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F5AF1A92379C02D7A43A23B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA8064D4F1A26F3A28AE747A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2C94D381B9244800038B773 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C94D421B9244800038B773 /* AppDelegate.swift in Sources */,
+				D245D6871B95037600E7B998 /* ImageCropperController.swift in Sources */,
+				D245D68E1B9743A400E7B998 /* DraggableItem.swift in Sources */,
+				5FE83A061EE88851000CDA55 /* Xml.swift in Sources */,
+				5FA267371D16FD68003C59E7 /* NSOpenPanel.swift in Sources */,
+				5F2ED01D1D119E8A00243904 /* ConcurrentOperation.swift in Sources */,
+				D2C94D5D1B926B110038B773 /* Image.swift in Sources */,
+				5F9416E31D1591FC00996842 /* RMPB.swift in Sources */,
+				5F2ED01B1D119E5900243904 /* Flickr.swift in Sources */,
+				5F9416E01D14697E00996842 /* String.swift in Sources */,
+				D2C94D5F1B929EDB0038B773 /* TableHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2C94D481B9244800038B773 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2C94D531B9244800038B773 /* RMPBUploaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D2C94D4E1B9244800038B773 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2C94D3B1B9244800038B773 /* RMPBUploader */;
+			targetProxy = D2C94D4D1B9244800038B773 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D2C94D451B9244800038B773 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2C94D461B9244800038B773 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D2C94D541B9244800038B773 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D2C94D551B9244800038B773 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		D2C94D571B9244800038B773 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B465DB89533CD0D502493B05 /* Pods-RMPBUploader.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RMPBUploader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.williatf.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RMPBUploader/RMPBUploader-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D2C94D581B9244800038B773 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7486330BDFB8AA7AF1922594 /* Pods-RMPBUploader.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = RMPBUploader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.williatf.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RMPBUploader/RMPBUploader-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D2C94D5A1B9244800038B773 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RMPBUploaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.williatf.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMPBUploader.app/Contents/MacOS/RMPBUploader";
+			};
+			name = Debug;
+		};
+		D2C94D5B1B9244800038B773 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RMPBUploaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.williatf.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMPBUploader.app/Contents/MacOS/RMPBUploader";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2C94D371B9244800038B773 /* Build configuration list for PBXProject "RMPBUploader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2C94D541B9244800038B773 /* Debug */,
+				D2C94D551B9244800038B773 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2C94D561B9244800038B773 /* Build configuration list for PBXNativeTarget "RMPBUploader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2C94D571B9244800038B773 /* Debug */,
+				D2C94D581B9244800038B773 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2C94D591B9244800038B773 /* Build configuration list for PBXNativeTarget "RMPBUploaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2C94D5A1B9244800038B773 /* Debug */,
+				D2C94D5B1B9244800038B773 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2C94D341B9244800038B773 /* Project object */;
+}

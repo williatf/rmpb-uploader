@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :osx, '10.10'
+use_frameworks!
+
+target 'RMPBUploader' do
+    pod 'Alamofire', '~> 4.4'
+    pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+    pod 'AEXML'
+end
