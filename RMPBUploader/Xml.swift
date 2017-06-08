@@ -52,7 +52,7 @@ class Xml: NSObject {
          
          **/
         
-        print("starting createXML")
+//        print("starting createXML")
         
         var xmlFileList:[URL] = []
         let finalXMLDoc = AEXMLDocument()
@@ -92,7 +92,7 @@ class Xml: NSObject {
                 }
             }
             
-            print(finalXMLDoc.xml)
+//            print(finalXMLDoc.xml)
             
             
         } catch {

@@ -250,7 +250,7 @@ class FlickrCreatePhotoset: ConcurrentOperation {
         .responseString { response in
             switch response.result {
             case .success:
-                print("\(String(describing: response.result.value))")
+//                print("\(String(describing: response.result.value))")
                 do {
                     
                     // create an xml response object from the response

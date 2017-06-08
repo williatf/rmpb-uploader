@@ -36,26 +36,50 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     var xml: String = String()
     var mainDir: URL?
 
+    // update preferences
+    // triggered on menu item: Preferences...
     @IBAction func updatePrefs(_ sender: NSMenuItem) {
         if prefsController == nil {
             prefsController = PrefsController.init(windowNibName: "PrefsController")
         }
         prefsController!.showWindow(nil)
     }
-    
-    // Create a shared AppDelegate (not currently used)
-    //    class var sharedInstance : AppDelegate {
-    //        struct Static {
-    //            static let instance : AppDelegate = AppDelegate()
-    //        }
-    //        return Static.instance
-    //    }
-    
-    // Mark: UI methods
-    
+
     // Select the main image folder when the button is clicked
     @IBAction func selectImageFolder(_ sender: AnyObject) {
-        
+        self.imageFolder()
+    }
+    
+    @IBAction func selectEventBadge(_ sender: AnyObject) {
+        if let badgeURL = NSOpenPanel().selectUrl {
+            eventBadge.image = NSImage(contentsOf: badgeURL as URL)
+            eventBadgeURL = badgeURL
+            print(eventBadgeURL!)
+        } else {
+            print("file selection was canceled")
+        }
+    }
+    
+    @IBAction func setCropParams(_ sender: AnyObject) {
+        if imageCropperController == nil {
+            imageCropperController = ImageCropperController.init(windowNibName: "ImageCropperController")
+        }
+        imageCropperController!.showWindow(nil)
+    }
+    
+    @IBAction func beginProcess(_ sender: NSButton) {
+        self.performCrop()
+    }
+    
+    // create event triggered on
+    @IBAction func startCreateEvent(_ sender: NSButton) {
+        self.createEvent()
+    }
+    
+    // FUNCTIONS
+
+    private func imageFolder(){
+    
         // Create the Panel that allows the user to choose a directory
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
@@ -130,24 +154,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
         
     }
     
-    @IBAction func selectEventBadge(_ sender: AnyObject) {
-        if let badgeURL = NSOpenPanel().selectUrl {
-            eventBadge.image = NSImage(contentsOf: badgeURL as URL)
-            eventBadgeURL = badgeURL
-            print(eventBadgeURL!)
-        } else {
-            print("file selection was canceled")
-        }
-    }
-    
-    @IBAction func setCropParams(_ sender: AnyObject) {
-        if imageCropperController == nil {
-            imageCropperController = ImageCropperController.init(windowNibName: "ImageCropperController")
-        }
-        imageCropperController!.showWindow(nil)
-    }
-    
-    @IBAction func beginProcess(_ sender: NSButton) {
+    private func performCrop() {
+        
         //        print("\(crop.left), \(crop.right)")
         
         // create strips directory
@@ -178,12 +186,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
             }
         }
         
+        // do the cropping asyncronously
+        // create custom queue on userInitiated thread
+        let cropQueue = DispatchQueue(label: "pics.rmpb.cropqueue", qos: .userInitiated, attributes: .concurrent)
+        
+        // create dispatch group to control subsequent action triggers
+        let cropGroup = DispatchGroup()
+        
+        print(Date())
+        print("cropping started")
+        
         // crop strips
         for photoStripImage in photoStripImages.allImages {
             
-            
-            //do this asyncronously
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async{
+            // create task to be queued
+            let cropTask = DispatchWorkItem {
                 // get the URL to the strip
                 let photoStripImageURL = photoStripImage.fileURL
                 
@@ -214,18 +231,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 CGImageDestinationAddImage(destination!, croppedImage!, nil)
                 if CGImageDestinationFinalize(destination!) {
                     photoStripImage.fileState = "Cropped"
-                    // update the view on the main thread
-                    DispatchQueue.main.async{
-                        self.photoStripImageTable.reloadData()
-                    }
                 } else {
                     photoStripImage.fileState = "Crop Failed"
-                    // update the view on the main thread
-                    DispatchQueue.main.async{
-                        self.photoStripImageTable.reloadData()
-                    }
                 }
-            } // end async closure
+                
+                // remove this item from the stack
+                cropGroup.leave()
+                
+            } // end cropTask closure
+            
+            // add this item to the stack
+            cropGroup.enter()
+
+            cropQueue.async(execute: cropTask)
+            
+            // update the view on the main thread
+            cropTask.notify(queue: DispatchQueue.main) {
+                self.photoStripImageTable.reloadData()
+            }
+        }
+        
+        cropGroup.notify(queue: .main){
+            print(Date())
+            print("cropping done! starting upload...")
+            self.uploadImages()
         }
     }
     
@@ -237,29 +266,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+
     
-    // -----------------------------------------------
-    // NSTableViewDataSource Delegate methods
-    // -----------------------------------------------
+    private func uploadImages() {
+        
+        // set max concurrent operations
+        pendingOperations.opQueue.maxConcurrentOperationCount = 10
     
-    func numberOfRows(in aTableView: NSTableView) -> Int {
-        if aTableView.identifier == "individualImages" {
-            return individualImages.numberOfRowsInTableView(aTableView)
-        } else {
-            return photoStripImages.numberOfRowsInTableView(aTableView)
-        }
-    }
-    
-    func tableView(_ aTableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        if aTableView.identifier == "individualImages" {
-            return individualImages.tableView(aTableView, objectValueForTableColumn: tableColumn, row: row)
-        } else {
-            return photoStripImages.tableView(aTableView, objectValueForTableColumn: tableColumn, row: row)
-        }
-    }
-    
-    
-    @IBAction func uploadImages(_ sender: AnyObject) {
         
         //upload images
         for individualImage in individualImages.allImages {
@@ -273,65 +286,59 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
             startUploadForRecord(photoStripImage, tableView: photoStripImageTable)
         }
         
-        //        pendingOperations.
-        
     }
     
     
-    func startUploadForRecord(_ imageDetails: Image, tableView: NSTableView){
+    private func startUploadForRecord(_ imageDetails: Image, tableView: NSTableView){
         // send the Image to flickrUploader
         let uploader = FlickrUploader(image: imageDetails, tableView: tableView)
         
-        // set max concurrent operations
-        pendingOperations.opQueue.maxConcurrentOperationCount = 10
-        
         // add the operation to the list of pending operations
-        //        pendingOperations.uploadsInProgress[imageDetails.index] = uploader
+        // pendingOperations.uploadsInProgress[imageDetails.index] = uploader
         
         // add the operation to the operation queue
         pendingOperations.opQueue.addOperation(uploader)
+
+        // update the image state
+        imageDetails.fileState = "Queued"
         
         DispatchQueue.main.async(execute: {
-            // update the image state
-            imageDetails.fileState = "Queued"
             tableView.reloadData()
         })
         
         // after the operation is complete
         uploader.completionBlock = {
+            // update the image state
+            imageDetails.fileState = "Uploaded"
+
             DispatchQueue.main.async(execute: {
-                // remove the operation from the list of pending operations
-                //                pendingOperations.uploadsInProgress.removeValueForKey(imageDetails.index)
-                
-                
-                // update the image state
-                imageDetails.fileState = "Uploaded"
                 tableView.reloadData()
             })
+
             if pendingOperations.opQueue.operationCount == 0 {
-                print ("upload complete")
+                print(Date())
+                print ("upload complete! adding to Photosets...")
                 self.createPhotosets()
             }
         }
     }
     
-    func createPhotosets(){
+    private func createPhotosets(){
         startCreatePhotosets(individualImages)
         startCreatePhotosets(photoStripImages)
     }
     
     
-    func startCreatePhotosets(_ photoset: TableHelper) {
+    private func startCreatePhotosets(_ photoset: TableHelper) {
         
         let createPhotoset = FlickrCreatePhotoset(images: photoset)
         
         // add the operation to the operation queue
-        pendingOperations.opQueue.maxConcurrentOperationCount = 10
         pendingOperations.opQueue.addOperation(createPhotoset)
         
         // after the operation is complete
         createPhotoset.completionBlock = {
-            print ("photoset created")
+//            print ("photoset created")
             
             var addToPhotoset = [Int:FlickrAddToPhotoset]()
             for image in photoset.allImages {
@@ -350,26 +357,29 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                             self.individualImageTable.reloadData()
                         })
                         if pendingOperations.opQueue.operationCount == 0 {
-                            print ("add to photosets complete")
+                            print(Date())
+                            print ("add to photosets complete! creating XML...")
+                            self.createXML()
                         }
                     }
                 }
             }
         }
     }
-    
-    
-    @IBAction func startCreateXML(_ sender: NSButton) {
+ 
+    private func createXML(){
         
         let xmlObj = Xml()
         xml = xmlObj.createXML(self.mainDir!)
         
-        print("XML created")
+        print(Date())
+        print("XML created! creating event...")
+        self.createEvent()
         
     }
+
+    private func createEvent(){
     
-    @IBAction func createEvent(_ sender: NSButton) {
-        
         // check to make sure there's a password
         // and if not, show an alert
         if self.eventPasswordLabel.stringValue == "" {
@@ -405,12 +415,38 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                     // add xml file - photoXML
                     RMPB().updateEvent(eventTitle, field: "photoXML", value: self.xml)
                     
+                    
+                    print(Date())
+                    print("event created!")
+                    
                 }
             })
             
             
         }
     }
+    
+    
+    // -----------------------------------------------
+    // NSTableViewDataSource Delegate methods
+    // -----------------------------------------------
+    
+    func numberOfRows(in aTableView: NSTableView) -> Int {
+        if aTableView.identifier == "individualImages" {
+            return individualImages.numberOfRowsInTableView(aTableView)
+        } else {
+            return photoStripImages.numberOfRowsInTableView(aTableView)
+        }
+    }
+    
+    func tableView(_ aTableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        if aTableView.identifier == "individualImages" {
+            return individualImages.tableView(aTableView, objectValueForTableColumn: tableColumn, row: row)
+        } else {
+            return photoStripImages.tableView(aTableView, objectValueForTableColumn: tableColumn, row: row)
+        }
+    }
+    
 }
 
 
