@@ -68,6 +68,8 @@ class PrefsController: NSWindowController {
         prefs.set(sharedSecret, forKey: "RMPB_sharedSecret" )
         prefs.set(authToken, forKey: "RMPB_authToken" )
         prefs.set(authSecret, forKey: "RMPB_authSecret" )
+        
+        prefs.synchronize()
 
         // close the window
         self.close()
