@@ -8,6 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PrefsController" customModule="RMPBUploader" customModuleProvider="target">
             <connections>
+                <outlet property="apiKeyField" destination="V7f-bN-yJe" id="zCy-gc-DTd"/>
+                <outlet property="authSecretField" destination="CAa-1N-Jtj" id="38R-Dp-tFU"/>
+                <outlet property="authTokenField" destination="fWq-Ix-qoe" id="34f-Ow-Sra"/>
+                <outlet property="sharedSecretField" destination="df6-uo-y9E" id="dXE-nV-hvM"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -18,10 +22,10 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="249" y="993" width="516" height="255"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <value key="minSize" type="size" width="516" height="247"/>
-            <value key="maxSize" type="size" width="516" height="247"/>
-            <value key="minFullScreenContentSize" type="size" width="516" height="247"/>
-            <value key="maxFullScreenContentSize" type="size" width="516" height="247"/>
+            <value key="minSize" type="size" width="516" height="255"/>
+            <value key="maxSize" type="size" width="516" height="255"/>
+            <value key="minFullScreenContentSize" type="size" width="516" height="255"/>
+            <value key="maxFullScreenContentSize" type="size" width="516" height="255"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="516" height="255"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -114,6 +118,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="updatePrefs:" target="-2" id="0rN-94-cug"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Fn-Vg-ESv">
                         <rect key="frame" x="337" y="13" width="82" height="32"/>
@@ -124,6 +131,9 @@
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancelPrefs:" target="-2" id="s0P-22-nIr"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -140,7 +150,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="158" y="-17.5"/>
+            <point key="canvasLocation" x="423" y="-16"/>
         </window>
     </objects>
 </document>

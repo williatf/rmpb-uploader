@@ -13,13 +13,27 @@ import AEXML
 let flickr = Flicker()
 
 struct Flicker {
-    //Flickr OAuth info
-    let APIKey        = "ec8165eca16e6aa618543338dd35cbdf";
-    let SharedSecret  = "68c9fdf844d215a3";
-    let AuthToken     = "72157632371835201-e133e9c4fe5805a0";
-    let AuthSecret    = "136f88f3656bad23";
-    let RESTAPI       = "https://api.flickr.com/services/rest/";
-    let UploadAPI     = "https://api.flickr.com/services/upload/";
+    
+    //Flickr API info
+    var APIKey: String
+    var SharedSecret: String
+    var AuthToken: String
+    var AuthSecret: String
+    let RESTAPI       = "https://api.flickr.com/services/rest/"
+    let UploadAPI     = "https://api.flickr.com/services/upload/"
+
+    // initialize!
+    init(){
+        
+        let prefs = UserDefaults.standard
+        
+        // read keys from UserDefaults
+        APIKey          = prefs.object(forKey: "RMPB_apiKey") as! String
+        SharedSecret    = prefs.object(forKey: "RMPB_sharedSecret") as! String
+        AuthToken       = prefs.object(forKey: "RMPB_authToken") as! String
+        AuthSecret      = prefs.object(forKey: "RMPB_authSecret") as! String
+    }
+    
 }
 
 class FlickrUploader: ConcurrentOperation {
@@ -36,9 +50,6 @@ class FlickrUploader: ConcurrentOperation {
      e.g. "GET&https%3A%2F%2Fwww.flickr.com%2Fservices%2Foauth%2Frequest_token&oauth_callback%3Dhttp%253A%252F%252Fwww.example.com%26oauth_consumer_key%3D653e7a6ecc1d528c516cc8f92cf98611%26oauth_nonce%3D95613465%26oauth_signature_method%3DHMAC-SHA1%26oauth_timestamp%3D1305586162%26oauth_version%3D1.0"
      
      key = "<SharedSecret>&<AuthSecret>"
-     
-     e.g. "68c9fdf844d215a3&136f88f3656bad23"
-     
      
      **/
     

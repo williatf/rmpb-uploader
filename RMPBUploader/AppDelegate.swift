@@ -14,6 +14,7 @@ var individualImageDir: URL?
 var individualImages = TableHelper()
 var photoStripImages = TableHelper()
 var imageCropperController:ImageCropperController?
+var prefsController:PrefsController?
 let stripsFolder:String = "_strips"
 var stripsFolderDir: URL?
 let pendingOperations = PendingOperations()
@@ -35,6 +36,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     var xml: String = String()
     var mainDir: URL?
 
+    @IBAction func updatePrefs(_ sender: NSMenuItem) {
+        if prefsController == nil {
+            prefsController = PrefsController.init(windowNibName: "PrefsController")
+        }
+        prefsController!.showWindow(nil)
+    }
     
     // Create a shared AppDelegate (not currently used)
     //    class var sharedInstance : AppDelegate {
