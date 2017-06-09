@@ -32,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     @IBOutlet weak var eventDatePicker: NSDatePicker!
     @IBOutlet weak var eventPasswordLabel: NSTextField!
     @IBOutlet weak var eventBadge: NSImageView!
+    @IBOutlet weak var statusLabel: NSTextField!
     
     var xml: String = String()
     var mainDir: URL?
@@ -47,10 +48,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
 
     // Select the main image folder when the button is clicked
     @IBAction func selectImageFolder(_ sender: AnyObject) {
+        self.statusLabel.stringValue = "Status: Picking Event's Image Folder"
         self.imageFolder()
     }
     
     @IBAction func selectEventBadge(_ sender: AnyObject) {
+
+        // update status
+        self.statusLabel.stringValue = "Status: Picking Event's Badge Image"
+
         if let badgeURL = NSOpenPanel().selectUrl {
             eventBadge.image = NSImage(contentsOf: badgeURL as URL)
             eventBadgeURL = badgeURL
@@ -58,13 +64,33 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
         } else {
             print("file selection was canceled")
         }
+
+        // update status
+        self.statusLabel.stringValue = "Status: Ready"
+
     }
     
     @IBAction func setCropParams(_ sender: AnyObject) {
-        if imageCropperController == nil {
-            imageCropperController = ImageCropperController.init(windowNibName: "ImageCropperController")
+
+        // can't crop unless we've got images in the strips folder
+        if stripsFolderDir == nil {
+            let alert = NSAlert()
+            alert.messageText = "Error!"
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "Dismiss")
+            alert.informativeText = "You need to select the event image folder first!"
+            alert.beginSheetModal(for: self.window, completionHandler: nil)
+        } else {
+        
+            // update status
+            self.statusLabel.stringValue = "Status: Setting Cropping Parameters"
+
+            if imageCropperController == nil {
+                imageCropperController = ImageCropperController.init(windowNibName: "ImageCropperController")
+            }
+            imageCropperController!.showWindow(nil)
+
         }
-        imageCropperController!.showWindow(nil)
     }
     
     @IBAction func beginProcess(_ sender: NSButton) {
@@ -157,6 +183,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 // set the strips folder directory
                 stripsFolderDir = self.mainDir?.appendingPathComponent(stripsFolder,isDirectory: true)
                 debugPrint((stripsFolderDir?.path)!)
+                
+                // update Status
+                self.statusLabel.stringValue = "Status: Ready"
+
             }
         })
         
@@ -270,6 +300,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.eventDatePicker.dateValue = Date()
+        self.statusLabel.stringValue = "Status: Ready"
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

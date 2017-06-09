@@ -20,9 +20,12 @@ class ImageCropperController: NSWindowController {
     @IBOutlet weak var nextButton: NSButton!
 
     @IBAction func done(_ sender: NSButton) {
+
+        // update status
+        let appDelegate = NSApplication.shared().delegate as! AppDelegate
+        appDelegate.statusLabel.stringValue = "Status: Ready"
+
         self.close()
-//        let appDelInstance = AppDelegate.sharedInstance
-//        appDelInstance.beginProcess(NSButton())
     }
 
     
