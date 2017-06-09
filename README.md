@@ -6,6 +6,7 @@ This tool takes a photobooth event image folder, an event album password, an eve
 The event image folder contains a subfolder called `prints/` which contains the printed photostrips, a 4x6 image with duplicate 2x6 images side-by-side on it.
 
 See the example:
+
 <img src="https://github.com/williatf/rmpb-uploader/raw/master/testEventFolder/TestEventImagesFolder/prints/20170325_100553.jpg" width="300">
 
 The event image folder also contains XML files that detail which images in the folder belong to which photostrip in the `prints/` folder.
@@ -40,4 +41,5 @@ The cropped images are put into a new `_strips/` folder.
 For photobooth events that use the greenscreen settings, a `greenscreen/` folder will exist that has the rendered individual images.  If this folder exists and contains at least 5 images, the tool will use it as the source for the individual images, and not the main event image folder, where all of the images are the raw camera images before greenscreen processing.
 
 Written by: Todd Williams
+
 Date: 6/8/2017
