@@ -68,12 +68,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     }
     
     @IBAction func beginProcess(_ sender: NSButton) {
-        self.performCrop()
-    }
-    
-    // create event triggered on
-    @IBAction func startCreateEvent(_ sender: NSButton) {
-        self.createEvent()
+        
+        // check to make sure there's a password
+        // and if not, update and then show the alert
+        if self.eventPasswordLabel.stringValue == "" {
+            let alert = NSAlert()
+            alert.messageText = "Error!"
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "Dismiss")
+            alert.informativeText = "You need to enter the event's password!"
+            alert.beginSheetModal(for: self.window, completionHandler: nil)
+        } else {
+            // start with the crop, everything else is triggered from there
+            self.performCrop()
+        }
     }
     
     // FUNCTIONS
@@ -240,13 +248,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 
             } // end cropTask closure
             
-            // add this item to the stack
+            // add this task to the stack
             cropGroup.enter()
 
+            // do the task
             cropQueue.async(execute: cropTask)
             
             // update the view on the main thread
-            cropTask.notify(queue: DispatchQueue.main) {
+            cropTask.notify(queue: .main) {
                 self.photoStripImageTable.reloadData()
             }
         }
@@ -380,50 +389,99 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
 
     private func createEvent(){
     
-        // check to make sure there's a password
-        // and if not, show an alert
-        if self.eventPasswordLabel.stringValue == "" {
-            let alert = NSAlert()
-            alert.messageText = "Error!"
-            alert.addButton(withTitle: "Dismiss")
-            alert.informativeText = "You need to enter the event's password!"
-            alert.beginSheetModal(for: self.window, completionHandler: nil)
-        } else {
+        // create an alert
+        let alert = NSAlert()
+
+        // this flag will be set to false if any of the updates fail
+        var updated = true
+        
+        // these calls happen asyncronously, so create a DispatchGroup and add this to the stack
+        let eventUpdateGroup = DispatchGroup()
+        eventUpdateGroup.enter()
+//        print("create event entered group")
+        
+        // add two years to the event date to get the expiration date
+        let components: DateComponents = DateComponents()
+        (components as NSDateComponents).setValue(2, forComponent: NSCalendar.Unit.year)
+        let eventExpiration = (Calendar.current as NSCalendar).date(byAdding: components, to: self.eventDatePicker.dateValue, options: NSCalendar.Options(rawValue: 0))
+        
+        // create the event
+        // this adds a record to the db which sets title, password, and expiration date
+        // all subsequent updates use the eventTitle as the key
+        let eventTitle = self.imageFolderLabel.stringValue
+        RMPB().createEvent(eventTitle, eventPassword: self.eventPasswordLabel.stringValue, eventExpiration: eventExpiration!, completionHandler: { success in
             
-            // add two years to the event date to get the expiration date
-            let components: DateComponents = DateComponents()
-            (components as NSDateComponents).setValue(2, forComponent: NSCalendar.Unit.year)
-            let eventExpiration = (Calendar.current as NSCalendar).date(byAdding: components, to: self.eventDatePicker.dateValue, options: NSCalendar.Options(rawValue: 0))
-            
-            // create the event
-            // this adds a record to the db which sets title, password, and expiration date
-            // all subsequent updates use the eventTitle as the key
-            let eventTitle = self.imageFolderLabel.stringValue
-            RMPB().createEvent(eventTitle, eventPassword: self.eventPasswordLabel.stringValue, eventExpiration: eventExpiration!, completionHandler: { success in
+            // the completion handler ensures the event is created before calling any updates
+            if success {
                 
-                // the completion handler ensures the event is created before calling any updates
-                if success {
-                    // add photoset id for strips - flickr_id_strips
-                    RMPB().updateEvent(eventTitle, field: "flickr_id_strips", value: photoStripImages.flickrPhotoset)
-                    
-                    // add photoset id for individual images - flickr_id_individuals
-                    RMPB().updateEvent(eventTitle, field: "flickr_id_individuals", value: individualImages.flickrPhotoset)
-                    
-                    // add badge image - image
-                    RMPB().updateEvent(eventTitle, field: "image", value: eventBadgeURL!.lastPathComponent, badge: eventBadgeURL!)
-                    
-                    // add xml file - photoXML
-                    RMPB().updateEvent(eventTitle, field: "photoXML", value: self.xml)
-                    
-                    
-                    print(Date())
-                    print("event created!")
-                    
-                }
-            })
+                eventUpdateGroup.enter()
+//                print("update 1 entered group")
+                // add photoset id for strips - flickr_id_strips
+                RMPB().updateEvent(eventTitle, field: "flickr_id_strips", value: photoStripImages.flickrPhotoset, completionHandler: { success in
+                    if !success { updated = false }
+                    eventUpdateGroup.leave()
+//                    print("update 1 left group")
+                })
+                
+                eventUpdateGroup.enter()
+//                print("update 2 entered group")
+                // add photoset id for individual images - flickr_id_individuals
+                RMPB().updateEvent(eventTitle, field: "flickr_id_individuals", value: individualImages.flickrPhotoset, completionHandler: { success in
+                    if !success { updated = false }
+                    eventUpdateGroup.leave()
+//                    print("update 2 left group")
+                })
+
+                
+                eventUpdateGroup.enter()
+//                print("update 3 entered group")
+                // add badge image - image
+                RMPB().updateEvent(eventTitle, field: "image", value: eventBadgeURL!.lastPathComponent, badge: eventBadgeURL!, completionHandler: { success in
+                    if !success { updated = false }
+                    eventUpdateGroup.leave()
+//                    print("update 3 left group")
+                })
+
+                
+                eventUpdateGroup.enter()
+//                print("update 4 entered group")
+                // add xml file - photoXML
+                RMPB().updateEvent(eventTitle, field: "photoXML", value: self.xml, completionHandler: { success in
+                    if !success { updated = false }
+                    eventUpdateGroup.leave()
+//                    print("update 4 left group")
+                })
+                
+            } else {
+                updated = false
+            }
             
+            // remove from the stack
+            // this is done whether or not it was successful
+            eventUpdateGroup.leave()
+//            print("create event left group")
+        })
+
+        eventUpdateGroup.notify(queue: .main){
+            print(Date())
+            print("event created!")
             
+            // if everything worked, display a success alert
+            if updated {
+                alert.messageText = "Success!"
+                alert.alertStyle = .informational
+                alert.addButton(withTitle: "Dismiss")
+                alert.informativeText = "Everything worked!  You can quit with cmd+Q."
+            } else {
+                alert.messageText = "Problem!"
+                alert.alertStyle = .warning
+                alert.addButton(withTitle: "Dismiss")
+                alert.informativeText = "Something went wrong with event creation! You should check it out and then try again. You can quit with cmd+Q."
+            }
+            alert.beginSheetModal(for: self.window, completionHandler: nil)
+
         }
+        
     }
     
     

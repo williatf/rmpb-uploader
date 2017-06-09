@@ -11,7 +11,7 @@ import Alamofire
 
 class RMPB {
     
-    let rmpbURL = "http://www.rmpb.net/admin/"
+    let rmpbURL = "http://www.rmpb.pics/admin/"
     
     func createEvent(_ eventTitle: String, eventPassword: String, eventExpiration: Date, completionHandler: @escaping (_ success:Bool)->()) {
         
@@ -36,14 +36,14 @@ class RMPB {
         Alamofire.request(rmpbURL + endpoint, method: .post, parameters: params)
             .validate()
             .responseString { response in
-                debugPrint("Create Event Response:")
-                debugPrint(response.result)
+//                debugPrint("Create Event Response:")
+//                debugPrint(response.result)
                 completionHandler(true)
             }
         
     }
     
-    func updateEvent(_ eventTitle: String, field: String, value: String) {
+    func updateEvent(_ eventTitle: String, field: String, value: String, completionHandler: @escaping (_ success:Bool)->()) {
         /**
          POST should include params:
          'event_title'
@@ -61,12 +61,13 @@ class RMPB {
         Alamofire.request(rmpbURL + endpoint, method: .post, parameters: params)
             .validate()
             .responseString { response in
-                debugPrint(response)
+//                debugPrint(response)
+                completionHandler(true)
             }
 
     }
     
-    func updateEvent(_ eventTitle: String, field: String, value: String, badge: URL) {
+    func updateEvent(_ eventTitle: String, field: String, value: String, badge: URL, completionHandler: @escaping (_ success:Bool)->()) {
         /**
          POST should include params:
          'event_title'
@@ -96,10 +97,12 @@ class RMPB {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseString  { response in
-                        debugPrint(response)
+//                        debugPrint(response)
+                        completionHandler(true)
                     }
                 case .failure(let encodingError):
                     print(encodingError)
+                    completionHandler(false)
                 }
             }
         )

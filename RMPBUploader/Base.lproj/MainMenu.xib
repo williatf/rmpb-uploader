@@ -167,12 +167,12 @@
                         </textFieldCell>
                     </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LSf-qg-U75">
-                        <rect key="frame" x="182" y="411" width="311" height="106"/>
+                        <rect key="frame" x="251" y="411" width="173" height="106"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="305" id="UtI-Ow-RMQ"/>
+                            <constraint firstAttribute="width" constant="167" id="1zI-Yl-IXZ"/>
                             <constraint firstAttribute="height" constant="100" id="xgm-Tp-J9S"/>
                         </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="pZ9-YA-ObU"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="photo" id="pZ9-YA-ObU"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBY-uf-2Qr">
                         <rect key="frame" x="18" y="385" width="169" height="19"/>
@@ -457,7 +457,6 @@
                     <constraint firstItem="LSf-qg-U75" firstAttribute="top" secondItem="Wh8-yq-Ghf" secondAttribute="bottom" constant="8" symbolic="YES" id="XYo-KP-AbG"/>
                     <constraint firstItem="tLD-cB-lsz" firstAttribute="leading" secondItem="7f2-cM-umk" secondAttribute="trailing" constant="8" symbolic="YES" id="ZYR-wu-vlV"/>
                     <constraint firstItem="hu1-Pj-yZl" firstAttribute="trailing" secondItem="1I6-nV-vKV" secondAttribute="trailing" id="b53-2q-fVe"/>
-                    <constraint firstItem="LSf-qg-U75" firstAttribute="leading" secondItem="Wh8-yq-Ghf" secondAttribute="leading" id="bvg-ck-qVj"/>
                     <constraint firstItem="Wh8-yq-Ghf" firstAttribute="centerY" secondItem="pBK-9j-gBs" secondAttribute="centerY" id="d2L-kl-A1k"/>
                     <constraint firstItem="oBY-uf-2Qr" firstAttribute="top" secondItem="fL1-5a-MAS" secondAttribute="bottom" constant="8" symbolic="YES" id="dcw-pq-qZU"/>
                     <constraint firstItem="tLD-cB-lsz" firstAttribute="top" secondItem="yVa-Um-h1P" secondAttribute="bottom" constant="8" symbolic="YES" id="e6y-fb-y8q"/>
@@ -467,6 +466,7 @@
                     <constraint firstItem="yVa-Um-h1P" firstAttribute="baseline" secondItem="oBY-uf-2Qr" secondAttribute="baseline" id="lCW-FW-qii"/>
                     <constraint firstItem="7f2-cM-umk" firstAttribute="top" secondItem="oBY-uf-2Qr" secondAttribute="bottom" constant="8" symbolic="YES" id="lSo-Vg-6OQ"/>
                     <constraint firstItem="X5j-5y-vKb" firstAttribute="top" secondItem="Jhk-sK-bjk" secondAttribute="top" id="rGE-9g-OMg"/>
+                    <constraint firstItem="LSf-qg-U75" firstAttribute="centerX" secondItem="Wh8-yq-Ghf" secondAttribute="centerX" id="wSS-Ze-UT1"/>
                     <constraint firstAttribute="bottom" secondItem="7f2-cM-umk" secondAttribute="bottom" constant="20" symbolic="YES" id="xfG-EL-K4m"/>
                 </constraints>
             </view>
