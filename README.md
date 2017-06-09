@@ -1,5 +1,5 @@
-# RMPBUploadr
-Swift version of the RMPB Uploadr tools
+# RMPBUploader
+Swift version of the RMPB Uploader tools
 
 This tool takes a photobooth event image folder, an event album password, an event album badge image (for the website), uploads the images to Flickr and creates an entry in the business website admininstrative database so that the album shows up on the business [website](http://www.rmpb.pics).
 
