@@ -2,6 +2,9 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+## test images strips folder (gets deleted everytime you crop)
+testEventFolder/TestEventImagesFolder/_strips/
+
 ## Build generated
 build/
 DerivedData/

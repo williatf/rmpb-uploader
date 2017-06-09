@@ -267,7 +267,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
         var croppedCount = 0
 
         // update status
-        self.statusLabel.stringValue = String(format: "Status: Cropped %d of %d",croppedCount,toCropCount)
+        self.statusLabel.stringValue = String(format: "Status: Cropping: Cropped %d of %d",croppedCount,toCropCount)
         
         // crop strips
         for photoStripImage in photoStripImages.allImages {
@@ -311,12 +311,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 // remove this item from the stack
                 cropGroup.leave()
                 
-                // update the count of cropped images
-                croppedCount += 1
-                
-                // update status
-                self.statusLabel.stringValue = String(format: "Status: Cropped %d of %d",croppedCount,toCropCount)
-                
                 
             } // end cropTask closure
             
@@ -328,7 +322,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
             
             // update the view on the main thread
             cropTask.notify(queue: .main) {
+
+                // update the count of cropped images
+                croppedCount += 1
+                
+                // update status
+                self.statusLabel.stringValue = String(format: "Status: Cropping: Cropped %d of %d",croppedCount,toCropCount)
+                
                 self.photoStripImageTable.reloadData()
+                
             }
         }
         
@@ -359,7 +361,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
         uploadedCount = 0
         
         // update status
-        self.statusLabel.stringValue = String(format: "Status: Uploaded %d of %d",uploadedCount,toUploadCount)
+        self.statusLabel.stringValue = String(format: "Status: Uploading: Uploaded %d of %d",uploadedCount,toUploadCount)
+        self.photoStripImageTable.reloadData()
+
 
         //upload images
         for individualImage in individualImages.allImages {
@@ -403,7 +407,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 
                 // update status
                 uploadedCount += 1
-                self.statusLabel.stringValue = String(format: "Status: Uploaded %d of %d",uploadedCount,toUploadCount)
+                self.statusLabel.stringValue = String(format: "Status: Uploading: Uploaded %d of %d",uploadedCount,toUploadCount)
             })
 
             if pendingOperations.opQueue.operationCount == 0 {

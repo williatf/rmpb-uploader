@@ -169,7 +169,7 @@
                         </textFieldCell>
                     </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LSf-qg-U75">
-                        <rect key="frame" x="251" y="486" width="173" height="106"/>
+                        <rect key="frame" x="186" y="486" width="173" height="106"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="167" id="1zI-Yl-IXZ"/>
                             <constraint firstAttribute="height" constant="100" id="xgm-Tp-J9S"/>
@@ -199,13 +199,13 @@
                         </textFieldCell>
                     </textField>
                     <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLD-cB-lsz">
-                        <rect key="frame" x="378" y="52" width="350" height="400"/>
+                        <rect key="frame" x="378" y="47" width="350" height="405"/>
                         <clipView key="contentView" id="Wiz-4N-Ihk">
-                            <rect key="frame" x="1" y="0.0" width="348" height="399"/>
+                            <rect key="frame" x="1" y="0.0" width="348" height="404"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView identifier="photoStripImages" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" headerView="wgz-Ms-tdy" id="U6v-OV-T3V">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="376"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="381"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -356,24 +356,24 @@
                         </datePickerCell>
                     </datePicker>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocn-dL-axa">
-                        <rect key="frame" x="18" y="20" width="712" height="24"/>
+                        <rect key="frame" x="18" y="20" width="712" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="708" id="1Xl-w4-0uq"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="zF0-17-Sah">
-                            <font key="font" metaFont="system" size="20"/>
+                            <font key="font" metaFont="system" size="16"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7f2-cM-umk">
-                        <rect key="frame" x="20" y="52" width="350" height="400"/>
+                        <rect key="frame" x="20" y="47" width="350" height="405"/>
                         <clipView key="contentView" id="g9q-7a-DMB">
-                            <rect key="frame" x="1" y="0.0" width="348" height="399"/>
+                            <rect key="frame" x="1" y="0.0" width="348" height="404"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView identifier="individualImages" focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" headerView="4L4-Ju-YrW" id="abq-Nz-Auc">
-                                    <rect key="frame" x="0.0" y="0.0" width="348" height="376"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="381"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -453,6 +453,7 @@
                     <constraint firstItem="jJr-av-gEn" firstAttribute="leading" secondItem="Jhk-sK-bjk" secondAttribute="trailing" constant="8" symbolic="YES" id="6eb-EE-3LC"/>
                     <constraint firstItem="fL1-5a-MAS" firstAttribute="top" secondItem="hu1-Pj-yZl" secondAttribute="bottom" constant="13" id="7Lx-Rb-39Q"/>
                     <constraint firstItem="X5j-5y-vKb" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="7Pb-YE-WDt"/>
+                    <constraint firstItem="LSf-qg-U75" firstAttribute="leading" secondItem="1I6-nV-vKV" secondAttribute="trailing" constant="12" id="7Xn-m6-8ZF"/>
                     <constraint firstItem="ocn-dL-axa" firstAttribute="top" secondItem="7f2-cM-umk" secondAttribute="bottom" constant="8" symbolic="YES" id="87R-pZ-hlL"/>
                     <constraint firstItem="ocn-dL-axa" firstAttribute="top" secondItem="tLD-cB-lsz" secondAttribute="bottom" constant="8" symbolic="YES" id="AmM-43-ot4"/>
                     <constraint firstItem="Jhk-sK-bjk" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="DGB-Hd-ToD"/>
@@ -480,7 +481,6 @@
                     <constraint firstItem="7f2-cM-umk" firstAttribute="top" secondItem="oBY-uf-2Qr" secondAttribute="bottom" constant="8" symbolic="YES" id="lSo-Vg-6OQ"/>
                     <constraint firstItem="ocn-dL-axa" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="qPZ-Yu-Jx0"/>
                     <constraint firstItem="X5j-5y-vKb" firstAttribute="top" secondItem="Jhk-sK-bjk" secondAttribute="top" id="rGE-9g-OMg"/>
-                    <constraint firstItem="LSf-qg-U75" firstAttribute="centerX" secondItem="Wh8-yq-Ghf" secondAttribute="centerX" id="wSS-Ze-UT1"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="370" y="844.5"/>
