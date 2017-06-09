@@ -8,15 +8,6 @@
 
 import Cocoa
 
-// Create a global crop variable
-var crop = cropParams()
-
-// Global cropParams struct for the crop variable
-struct cropParams {
-    var left = Int(10)
-    var right = Int(300)
-}
-
 // A Class for the cropr view draggable part
 class DraggableItem: NSView {
 

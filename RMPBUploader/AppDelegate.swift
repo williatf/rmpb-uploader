@@ -19,7 +19,15 @@ let stripsFolder:String = "_strips"
 var stripsFolderDir: URL?
 let pendingOperations = PendingOperations()
 var eventBadgeURL: URL?
+var crop = cropParams()
+var toUploadCount = 0
+var uploadedCount = 0
 
+// Global cropParams struct for the crop variable
+struct cropParams {
+    var left = Int(10)
+    var right = Int(300)
+}
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
@@ -36,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     
     var xml: String = String()
     var mainDir: URL?
+    private var cropParamsSet = false
 
     // update preferences
     // triggered on menu item: Preferences...
@@ -89,20 +98,32 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 imageCropperController = ImageCropperController.init(windowNibName: "ImageCropperController")
             }
             imageCropperController!.showWindow(nil)
+            
+            self.cropParamsSet = true
 
         }
     }
     
     @IBAction func beginProcess(_ sender: NSButton) {
         
+        let alert = NSAlert()
+        alert.messageText = "Error!"
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Dismiss")
+
         // check to make sure there's a password
         // and if not, update and then show the alert
         if self.eventPasswordLabel.stringValue == "" {
-            let alert = NSAlert()
-            alert.messageText = "Error!"
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "Dismiss")
             alert.informativeText = "You need to enter the event's password!"
+            alert.beginSheetModal(for: self.window, completionHandler: nil)
+        } else if stripsFolderDir == nil {
+            alert.informativeText = "You need to select the event image folder!"
+            alert.beginSheetModal(for: self.window, completionHandler: nil)
+        } else if eventBadgeURL == nil {
+            alert.informativeText = "You need to select an event badge!"
+            alert.beginSheetModal(for: self.window, completionHandler: nil)
+        } else if !cropParamsSet {
+            alert.informativeText = "You need to set the cropping parameters!"
             alert.beginSheetModal(for: self.window, completionHandler: nil)
         } else {
             // start with the crop, everything else is triggered from there
@@ -195,12 +216,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     private func performCrop() {
         
         //        print("\(crop.left), \(crop.right)")
+
         
+        // update status
+        self.statusLabel.stringValue = "Status: Creating Strips Folder"
+
         // create strips directory
         // check to see if it already exists
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath:(stripsFolderDir?.path)!) {
             debugPrint("_strips folder already exists... deleting all the files in it")
+
+            // update status
+            self.statusLabel.stringValue = "Status: Removing all images from existing Strips Folder"
+            
             do {
                 let filePaths = try fileManager.contentsOfDirectory(
                     at: stripsFolderDir!,
@@ -233,6 +262,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
         
         print(Date())
         print("cropping started")
+        
+        let toCropCount = photoStripImages.allImages.count
+        var croppedCount = 0
+
+        // update status
+        self.statusLabel.stringValue = String(format: "Status: Cropped %d of %d",croppedCount,toCropCount)
         
         // crop strips
         for photoStripImage in photoStripImages.allImages {
@@ -276,6 +311,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 // remove this item from the stack
                 cropGroup.leave()
                 
+                // update the count of cropped images
+                croppedCount += 1
+                
+                // update status
+                self.statusLabel.stringValue = String(format: "Status: Cropped %d of %d",croppedCount,toCropCount)
+                
+                
             } // end cropTask closure
             
             // add this task to the stack
@@ -312,8 +354,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
         
         // set max concurrent operations
         pendingOperations.opQueue.maxConcurrentOperationCount = 10
-    
+
+        toUploadCount = individualImages.allImages.count + photoStripImages.allImages.count
+        uploadedCount = 0
         
+        // update status
+        self.statusLabel.stringValue = String(format: "Status: Uploaded %d of %d",uploadedCount,toUploadCount)
+
         //upload images
         for individualImage in individualImages.allImages {
             
@@ -353,11 +400,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
 
             DispatchQueue.main.async(execute: {
                 tableView.reloadData()
+                
+                // update status
+                uploadedCount += 1
+                self.statusLabel.stringValue = String(format: "Status: Uploaded %d of %d",uploadedCount,toUploadCount)
             })
 
             if pendingOperations.opQueue.operationCount == 0 {
                 print(Date())
                 print ("upload complete! adding to Photosets...")
+                
+                DispatchQueue.main.async {
+                    //update status
+                    self.statusLabel.stringValue = "Status: Adding Images to Photosets"
+                }
+                
+                // trigger next step
                 self.createPhotosets()
             }
         }
@@ -408,6 +466,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
     }
  
     private func createXML(){
+
+        DispatchQueue.main.async {
+            //update status
+            self.statusLabel.stringValue = "Status: Creating Event on Website"
+        }
         
         let xmlObj = Xml()
         xml = xmlObj.createXML(self.mainDir!)
@@ -503,11 +566,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
                 alert.alertStyle = .informational
                 alert.addButton(withTitle: "Dismiss")
                 alert.informativeText = "Everything worked!  You can quit with cmd+Q."
+                //update status
+                self.statusLabel.stringValue = "Status: Everything worked! You can quit with cmd+Q"
+
             } else {
                 alert.messageText = "Problem!"
                 alert.alertStyle = .warning
                 alert.addButton(withTitle: "Dismiss")
                 alert.informativeText = "Something went wrong with event creation! You should check it out and then try again. You can quit with cmd+Q."
+                //update status
+                self.statusLabel.stringValue = "Status: Event Creation Error! You can quit with cmd+Q"
             }
             alert.beginSheetModal(for: self.window, completionHandler: nil)
 
