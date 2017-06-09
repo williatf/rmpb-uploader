@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<breeze_systems_photobooth version="1.1">
+<photo_information>
+  <date>2017/03/23</date>
+  <time>18:43:33</time>
+  <user_data></user_data>
+  <prints>1</prints>
+  <photobooth_images_folder>C:\Users\RMPB\Google Drive\RMPB\Events\!Confirmed\E20170325 - YW Carnival</photobooth_images_folder>
+  <caption1></caption1>
+  <caption2></caption2>
+  <photos>
+    <photo image="1">RMPB_0017.jpg</photo>
+    <photo image="2">RMPB_0018.jpg</photo>
+    <photo image="3">RMPB_0019.jpg</photo>
+    <photo image="4">RMPB_0020.jpg</photo>
+    <output>prints\20170323_184333.jpg</output>
+  </photos>
+</photo_information>
+</breeze_systems_photobooth>
