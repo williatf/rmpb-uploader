@@ -5,7 +5,9 @@ This tool takes a photobooth event image folder, an event album password, an eve
 
 The event image folder contains a subfolder called `prints/` which contains the printed photostrips, a 4x6 image with duplicate 2x6 images side-by-side on it.
 
-See the example:![example 4x6 image](https://github.com/williatf/rmpb-uploader/raw/master/testEventFolder/TestEventImagesFolder/prints/20170325_100553.jpg)
+See the example:![example 4x6 image](https://github.com/williatf/rmpb-uploader/raw/master/testEventFolder/TestEventImagesFolder/prints/20170325_100553.jpg =300x)
+
+Becomes:![example 4x6 image](https://github.com/williatf/rmpb-uploader/raw/master/testEventFolder/TestEventImagesFolder/_strips/20170325_100553.jpg =150x)
 
 The event image folder also contains XML files that detail which images in the folder belong to which photostrip in the `prints/` folder.
 
