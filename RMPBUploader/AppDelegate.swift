@@ -362,7 +362,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource {
         
         // update status
         self.statusLabel.stringValue = String(format: "Status: Uploading: Uploaded %d of %d",uploadedCount,toUploadCount)
-        self.photoStripImageTable.reloadData()
 
 
         //upload images

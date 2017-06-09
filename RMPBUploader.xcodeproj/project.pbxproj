@@ -17,6 +17,7 @@
 		5FE83A061EE88851000CDA55 /* Xml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE83A051EE88851000CDA55 /* Xml.swift */; };
 		5FE83A0B1EE8A82D000CDA55 /* PrefsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE83A091EE8A82D000CDA55 /* PrefsController.swift */; };
 		5FE83A0C1EE8A82D000CDA55 /* PrefsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE83A0A1EE8A82D000CDA55 /* PrefsController.xib */; };
+		5FFE17791EEA581900D833E9 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5FFE17781EEA581900D833E9 /* README.md */; };
 		D245D6871B95037600E7B998 /* ImageCropperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245D6851B95037600E7B998 /* ImageCropperController.swift */; };
 		D245D6881B95037600E7B998 /* ImageCropperController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D245D6861B95037600E7B998 /* ImageCropperController.xib */; };
 		D245D68E1B9743A400E7B998 /* DraggableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D245D68D1B9743A400E7B998 /* DraggableItem.swift */; };
@@ -49,6 +50,7 @@
 		5FE83A051EE88851000CDA55 /* Xml.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xml.swift; sourceTree = "<group>"; };
 		5FE83A091EE8A82D000CDA55 /* PrefsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefsController.swift; sourceTree = "<group>"; };
 		5FE83A0A1EE8A82D000CDA55 /* PrefsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PrefsController.xib; path = RMPBUploader/PrefsController.xib; sourceTree = SOURCE_ROOT; };
+		5FFE17781EEA581900D833E9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		70A2EA91F48BC428F7BDE247 /* Pods_RMPBUploader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMPBUploader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7486330BDFB8AA7AF1922594 /* Pods-RMPBUploader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPBUploader.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader.release.xcconfig"; sourceTree = "<group>"; };
 		B465DB89533CD0D502493B05 /* Pods-RMPBUploader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMPBUploader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMPBUploader/Pods-RMPBUploader.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				5FE83A091EE8A82D000CDA55 /* PrefsController.swift */,
 				D245D6851B95037600E7B998 /* ImageCropperController.swift */,
 				D2C94D431B9244800038B773 /* Images.xcassets */,
+				5FFE17781EEA581900D833E9 /* README.md */,
 				D245D68A1B950F5200E7B998 /* Classes */,
 				D2C94D3F1B9244800038B773 /* Supporting Files */,
 				5F9416DE1D14696A00996842 /* Extensions */,
@@ -358,6 +361,7 @@
 				D2C94D421B9244800038B773 /* AppDelegate.swift in Sources */,
 				D245D6871B95037600E7B998 /* ImageCropperController.swift in Sources */,
 				D245D68E1B9743A400E7B998 /* DraggableItem.swift in Sources */,
+				5FFE17791EEA581900D833E9 /* README.md in Sources */,
 				5FE83A061EE88851000CDA55 /* Xml.swift in Sources */,
 				5FA267371D16FD68003C59E7 /* NSOpenPanel.swift in Sources */,
 				5F2ED01D1D119E8A00243904 /* ConcurrentOperation.swift in Sources */,
